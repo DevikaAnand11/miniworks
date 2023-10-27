@@ -1,64 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toggle button </title>
-<style>
-    *{
-        padding: 0;
-        margin: 0;
-    }
-    .container{
-        width: 100%;
-        height: 100vh;
-        background-color: #fff;
-        display:flex;
-        align-items:centre;
-        justify-content:center;
-    }
-    .button {
-        background-color: beige;
-        width:200px;
-        height: 100px;
-        border-radius: 200px;
-        cursor: pointer;
-        position: relative;
-        transition: 0.2s;
-        align-items: centre;
-        justify-content: centre;
-        
-    }
-    .button::before{
-        position:absolute;
-        content: '';
-        background-color: #ffff;
-        width: 90px;
-        height: 90px;
-        border-radius: 100px;;
-        margin: 5px;
-        transition: 0.2s;
-    }
-    input:checked +.button{
-        background-color:pink;
-       
-    }
-    input:checked + .button::before{
-        transform: translatex(100px);
-       
-    }
-    /*input{
-        display:none;}*/
-    
-    </style>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>FD calculator</title>
+     <script src ="git.js"></script>
 
+     <style>
+  html,
+body{
+   margin: 0;
+   font-family: 'Poppins', sans-serif;
+   background-color:#f5e8ba;
+}
+
+#wrapper div,#wrapper h2{
+    display:flex;
+    justify-content: center;
+    
+}
+
+h2{
+    color:#ffeba7;
+    letter-spacing: 1px;
+}
+input{
+    border-radius: 5px;
+    border: 2px solid black ;
+    margin-top:30px;
+    height:2em;
+    width:250px;
+    padding-left:10px;
+}
+
+input:active{
+    border:none;
+}
+#wrapper{
+    height:500px;
+    width:400px;
+    margin:200px auto;
+    background-color:#1f2029;
+    border-radius:10px;
+    padding:30px;
+}
+
+button{
+    margin-top:20px;
+    background-color:#ffeba7;
+    border-radius: 4px;
+    height: 44px;
+    font-weight: 600;
+    padding: 0 30px;
+    letter-spacing: 1px;
+    border: none;
+    color: #102770;
+}
+
+button:hover{
+    cursor:pointer;
+}
+#result{
+    color:white;
+    margin-top:20px;
+    font-size:32px;
+}
+     </style>
 </head>
 <body>
-    <div class ="container" >
-        <input type ="checkbox" id="check">
-        <label for="check" class ="button"></label>
+     <div id="wrapper">
+          <h2>FD Rate calculator</h2>
+          <div class="inputdiv">
+              <input type="text" id="input" placeholder="tenure months">
+          </div>
+          <div>
+              <button type="submit" onclick="FDRate()">Calculate</button>
+          </div>
+          <div id="result">
+        </div>
+  
+          </div>
+      </div>
+      <script>
+          function FDRate (){
 
-    
-    </div>
+     const months = Number( document.getElementById("input").value)
+    let  rate=0
+     if(months <3)
+     rate=5.8
+    else if(months>=3  && months<=6)
+    rate=6.5
+    else if(months>=7  && months <=9 )
+    rate=7.9
+    else 
+    rate=8
+
+  console.log(months)
+    let result=document.querySelector('#result')
+    result.innerHTML = "Your interst rate is"  +rate + "%"
+      }
+     
+ 
+     
+
+
+      </script>
+  
 </body>
 </html>
+
